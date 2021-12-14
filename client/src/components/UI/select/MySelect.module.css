@@ -1,0 +1,25 @@
+.mySelect {
+  font-size: 1.3rem;
+  border-radius: 2rem;
+  border: none;
+  padding: 0.4rem;
+  text-align: center;
+  background-color: #091c3e;
+  color: #cdfb0a;
+}
+
+.mySelect:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 550px) {
+  .mySelect {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mySelect {
+    font-size: 0.8rem;
+  }
+}

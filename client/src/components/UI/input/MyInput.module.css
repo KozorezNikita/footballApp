@@ -1,0 +1,21 @@
+.myInput {
+  font-size: 1.3rem;
+  border-radius: 2rem;
+  /* border: none;*/
+  border: 0.2rem solid black;
+  padding: 0.4rem;
+  background-color: white;
+}
+/*
+@media screen and (max-width: 550px) {
+  .myInput {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .myInput {
+    font-size: 0.8rem;
+  }
+}
+*/
