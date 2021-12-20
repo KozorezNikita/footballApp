@@ -12,11 +12,12 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
     team_id: "",
   });
 
-  
-
   async function handleSubmit(e) {
     e.preventDefault();
-    await axios.post("http://localhost:8080/api/players", create);
+    await axios.post(
+      "https://pure-headland-63139.herokuapp.com/api/players",
+      create
+    );
     /*setPlayers(players.push({ name: create.name, surname: create.surname, image: create.image, position: create.position, team_id: create.team_id  }))*/
     setModal(false);
     /*setCreate({ name: "", surname: "", image: "", position: "", team_id: ""});*/
@@ -24,15 +25,13 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
 
   return (
     <form className="modal-player" onSubmit={handleSubmit}>
-
-      
       <label>Name</label>
       <MyInput
         value={create.name}
         placeholder="name"
         onChange={(e) => setCreate({ ...create, name: e.target.value })}
       />
-      
+
       <label>Surname</label>
       <MyInput
         value={create.surname}
@@ -45,8 +44,6 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
         placeholder="image"
         onChange={(e) => setCreate({ ...create, image: e.target.value })}
       />
-      
-      
 
       <label>Position</label>
       <MySelect
@@ -71,12 +68,8 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
           { value: 3, name: "Lille" },
         ]}
       />
-      
-      <button
-        disabled={
-          Object.values(create).some(val => val === "")
-        }
-      >
+
+      <button disabled={Object.values(create).some((val) => val === "")}>
         Press to create a user!
       </button>
     </form>
@@ -84,16 +77,3 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
 }
 
 export default ModalPlayer;
-/*
-
- <button
-        disabled={
-          create.name === "" ||
-          create.surname === "" ||
-          create.image === "" ||
-          create.position === "" ||
-          create.team_id === ""
-        }
-      >
-
-*/

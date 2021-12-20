@@ -13,6 +13,8 @@
   background-color: rgb(9, 28, 62);
   border-radius: 16px;
   min-width: 250px;
+  max-height: 80%;
+  overflow-y: auto;
 }
 
 .myModal.active {

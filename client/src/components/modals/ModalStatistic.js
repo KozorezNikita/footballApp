@@ -1,12 +1,14 @@
 import MyModal from "../UI/Modal/MyModal";
 import MyInput from "../UI/input/MyInput";
-import MySelect from "../UI/select/MySelect";
 import axios from "axios";
 
 function ModalStatistic({ create, setCreate, modal, setModal }) {
   async function handleSubmit(e) {
     e.preventDefault();
-    await axios.post("http://localhost:8080/api/statistic", create);
+    await axios.post(
+      "https://pure-headland-63139.herokuapp.com/api/statistic",
+      create
+    );
     /*setPlayer({ goals: create.goals, assists: create.assists, yellow_cards: create.yellow_cards, red_cards: create.red_cards, average_rating: create.average_rating, player_id: params.id  })*/
     setModal(false);
     /*setCreate({ goals: "", assists: "", yellow_cards: "", red_cards: "", average_rating: "", player_id: params.id  })*/
@@ -60,11 +62,7 @@ function ModalStatistic({ create, setCreate, modal, setModal }) {
           <br />
           <br />
           <br />
-          <button
-            disabled={
-              Object.values(create).some(val => val === "")
-            }
-          >
+          <button disabled={Object.values(create).some((val) => val === "")}>
             Press to create a statistic for player!
           </button>
         </form>

@@ -17,33 +17,3 @@ export const usePlayers = (players, sort, text) => {
   }, [text, sortedPlayers]);
   return sortedandSearchedPlayers;
 };
-
-/*
-
-export const useSortedPlayers = (players, sort) => {
-  const sortedPlayers = useMemo(() => {
-    if (sort) {
-      return [...players].sort((a, b) =>
-        a[sort] === b[sort] ? 0 : a[sort] > b[sort] ? 1 : -1
-      );
-    }
-    return players;
-  }, [sort, players]);
-  return sortedPlayers;
-};
-
-
-
-
-export const useSortedPlayers = (players, sort) => {
-  const sortedPlayers = useMemo(() => {
-    if (sort) {
-      return [...players].filter(player => player.team_id === sort);
-    } return players
-  }, [sort, players]);
-  return sortedPlayers;
-};
-
-
-
-*/

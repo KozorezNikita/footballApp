@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MySelect from "./UI/select/MySelect";
+import MySelect from "../components/UI/select/MySelect";
 
 function TeamStatHub({ players, teams }) {
   const [filter, setFilter] = useState("goals");
@@ -7,7 +7,7 @@ function TeamStatHub({ players, teams }) {
   return (
     <div className="team-hub">
       <div className="club">
-        <img src={teams.badge} /> <h1>{teams.team}</h1>
+        <img src={teams.badge} alt={teams.surname} /> <h1>{teams.team}</h1>
         <p>
           Nickname: <span>{teams.nickname}</span>
         </p>
@@ -41,7 +41,7 @@ function TeamStatHub({ players, teams }) {
               {" "}
               {index === 0 ? (
                 <div className="player-card">
-                  <img src={player.image} />{" "}
+                  <img src={player.image} alt={player.surname} />{" "}
                   <div className="info">
                     <p>{index + 1} .</p>
                     <p>
@@ -71,51 +71,3 @@ function TeamStatHub({ players, teams }) {
 }
 
 export default TeamStatHub;
-
-/*
-
-
-        <MySelect
-        value={filter}
-        onChange={(filter) => setFilter( filter )}
-        defaultValue="sort by"
-        options={[
-          { value: "goals", name: "by goals" },
-          { value: "assists", name: "by assists" },
-          { value: "yellow_cards", name: "by goals" },
-          { value: "red_cards", name:  "by assists" },
-        ]}
-         />
-
-
-
-
-
-         {[...players].sort((a,b) => b.filter - a.filter).map(player => <p>NAME  { player.name} SURNAME {player.surname} GOALS {player.goals} ASSISTS {player.assists}</p>)}
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var sortedPlayers = [...players];
-    sortedPlayers.sort((a, b) => b.goals - a.goals);
-{sortedPlayers.map((player, i) => (<div>{player.goals} {player.surname}</div>))}
-*/

@@ -1,10 +1,9 @@
-/*
 import axios from "axios";
 
 export default class PlayersService {
   static async getAll(team_id) {
     const response = await axios.get(
-      "http://localhost:8080/api/players/statistic",
+      "https://pure-headland-63139.herokuapp.com/api/players/statistic",
       {
         params: {
           team_id: team_id,
@@ -16,48 +15,14 @@ export default class PlayersService {
 
   static async getById(id) {
     const response = await axios.get(
-      "http://localhost:8080/api/players/statistic/" + id
-    );
-    return response;
-  }
-
-  static async getByTeamId(team_id = 1) {
-    const response = await axios.get("http://localhost:8080/api/players", {
-      params: {
-        team_id: team_id,
-      },
-    });
-    return response;
-  }
-}
-
-*/
-
-import axios from "axios";
-
-export default class PlayersService {
-  static async getAll(team_id) {
-    const response = await axios.get(
-      "http://localhost:8080/api/players/statistic",
-      {
-        params: {
-          team_id: team_id,
-        },
-      }
-    );
-    return response;
-  }
-
-  static async getById(id) {
-    const response = await axios.get(
-      "http://localhost:8080/api/players/statistic/" + id
+      "https://pure-headland-63139.herokuapp.com/api/players/statistic/" + id
     );
     return response;
   }
 
   static async getPlayersStatistic() {
     const response = await axios.get(
-      "http://localhost:8080/api/players/statistic"
+      "https://pure-headland-63139.herokuapp.com/api/players/statistic"
     );
     return response;
   }

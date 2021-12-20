@@ -6,9 +6,8 @@ import TeamsService from "../API/TeamsService";
 import PlayersList from "../components/PlayersList";
 import SearchBar from "../components/SearchBar";
 import MyLoader from "../components/UI/MyLoader/MyLoader";
-import TeamStatHub from "../components/TeamStatHub";
+import TeamStatHub from "./TeamStatHub";
 import MyModal from "../components/UI/Modal/MyModal";
-
 import ModalPlayer from "../components/modals/ModalPlayer";
 
 function FootballApp() {
@@ -41,7 +40,7 @@ function FootballApp() {
   }, [selected]);
 
   return (
-    <div>
+    <div className="footballApp">
       <MyModal visible={modal} setVisible={setModal}>
         <ModalPlayer
           players={players}
@@ -66,7 +65,12 @@ function FootballApp() {
       {isPlayersLoading ? (
         <MyLoader />
       ) : toggle ? (
-        <PlayersList players={sortedAndSearchedPlayers} />
+        <>
+          <div className="empty">
+            {playerError && <h1>Произошла ошибка ${playerError}</h1>}
+          </div>
+          <PlayersList players={sortedAndSearchedPlayers} />{" "}
+        </>
       ) : (
         <TeamStatHub players={sortedAndSearchedPlayers} teams={teams} />
       )}

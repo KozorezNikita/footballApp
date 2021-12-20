@@ -1,6 +1,5 @@
 
-
-
+/*
 const Pool = require("pg").Pool
 const pool = new Pool({
     user: process.env.DB_USER,
@@ -11,3 +10,21 @@ const pool = new Pool({
 })
 
 module.exports = pool
+*/
+
+
+
+const Pool = require("pg").Pool;
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+module.exports = pool;
+
+
+
+
+

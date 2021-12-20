@@ -25,8 +25,26 @@
   color: #cdfb0a;
   text-decoration: none;
   display: inline-block;
-  margin-left: 2rem;
+  margin: 1.5rem;
 }
+
+.navbar span {
+  cursor: pointer;
+}
+
+
+
+
+@media screen and (max-width: 550px) {
+  .navbar {
+    font-size: 1.2rem;
+  }
+  .navbar a {
+    margin: 1rem;
+  }
+}
+
+
 
 .searchbar {
   width: 100vw;
@@ -169,6 +187,11 @@ button {
   margin: 1rem;
 }
 
+.empty {
+  display: flex;
+  justify-content: center;
+}
+
 .player-card img {
   width: 100%;
   height: 350px;
@@ -203,7 +226,6 @@ button {
   }
 }
 
-
 @media screen and (max-width: 1360px) {
   .player-card {
     flex: 0 0 calc((100% / 3) - (6rem / 3));
@@ -219,7 +241,6 @@ button {
 }
 
 @media screen and (max-width: 595px) {
-
   .player-list div {
     justify-content: center;
   }
@@ -239,9 +260,7 @@ button {
   .btn-add {
     font-size: 1rem;
   }
-  
 }
-
 
 @keyframes fadeIn {
   from {
@@ -350,8 +369,24 @@ button {
     text-align: center;
   }
   .club img {
-    margin: 0 auto;
+    margin: 1rem auto;
     float: unset;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .team-hub {
+    margin: 1rem 2%;
+  }
+
+  .club {
+    padding: 0;
+    margin: 0;
+  }
+
+  .club p,
+  .club p span {
+    text-align: left;
   }
 }
 
@@ -385,18 +420,48 @@ button {
   font-size: 2rem;
 }
 
-@media screen and (max-width: 532px) {
+@media screen and (max-width: 735px) {
+  .card-id img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 650px) {
   .card-id img {
     width: 250px;
     height: 250px;
   }
 }
 
+@media screen and (max-width: 480px) {
+  .card-id img {
+    width: 250px;
+    height: 250px;
+  }
+  .card-id .stats {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card-id img {
+    width: 250px;
+    height: 250px;
+  }
+  .card-id .stats {
+    padding-left: 0;
+  }
+
+  .card-id .player-card {
+    max-width: 250px;
+    min-width: 250px;
+  }
+}
 
 .stat-hub {
   display: flex;
   justify-content: center;
-  
   color: #cdfb0a;
 }
 
@@ -406,18 +471,14 @@ button {
   padding-top: 1.5rem;
 }
 
-
-
 .stat-hub th,
 td {
   padding: 0.5rem;
 }
 
-.stat-hub table td:nth-child(n + 4)  {
+.stat-hub table td:nth-child(n + 4) {
   color: white;
-  
 }
-
 
 .stat-hub .search {
   background-color: #091c3e;
@@ -425,7 +486,6 @@ td {
   padding-top: 1rem;
   text-align: center;
 }
-
 
 .stat-hub .search div {
   background-color: rgb(9, 28, 62, 0.2);
@@ -435,248 +495,68 @@ td {
   padding-top: 1rem;
 }
 
-
-
-@media screen and (max-width: 750px)  {
-  .stat-hub table td:nth-child(-n+2), th:nth-child(-n+2)  {
+@media screen and (max-width: 750px) {
+  .stat-hub table td:nth-child(-n + 2),
+  th:nth-child(-n + 2) {
     display: none;
   }
 }
 
-
-
-@media screen and (max-width: 580px)  {
-  .tscroll {
-    width: 100%;
-    overflow-x: scroll;
-    margin-bottom: 10px;
-    
+@media screen and (max-width: 615px) {
+  .table-wrapper {
+    width: 500px;
+    height: 500px;
+    overflow: scroll;
   }
-  
-  .tscroll table th:nth-child(3), td:nth-child(3) {
+
+  .table-wrapper table {
+    min-width: 570px;
+  }
+
+  .table-wrapper table th:nth-child(3),
+  td:nth-child(3) {
     position: sticky;
     left: 0;
     background-color: rgb(9, 28, 61);
-  } 
+    z-index: 1;
+  }
+
+  .table-wrapper table th:nth-child(n + 4) {
+    position: sticky;
+    top: 0;
+    background-color: rgb(9, 28, 62);
+  }
+
+  @media screen and (max-width: 540px) {
+    .table-wrapper {
+      width: 95vw;
+    }
+  }
 }
 
-@media screen and (max-width: 813px) and (orientation : landscape) {
-}
 
-
-
-
-/*
-.stat-hub {
+.login-form {
   display: flex;
-  justify-content: center;
-  
+  flex-direction: column;
+  max-width: 330px;
+  margin: 3rem auto;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: #091c3e;
   color: #cdfb0a;
 }
 
-.stat-hub table {
-  text-align: center;
-  background-color: #091c3e;
-  margin-top: 1rem;
+.login-form label {
+  padding: 1rem 0;
 }
 
-.stat-hub caption {
-  font-size: 2rem;
-  background-color: #091c3e;
-}
-
-.stat-hub th,
-td {
+.login-form button {
+  font-size: 1.5rem ;
   padding: 0.5rem;
-}
-
-.stat-hub table td:nth-child(n + 4)  {
-  color: white;
-  
-}
-
-
-
-@media screen and (max-width: 750px)  {
-  .stat-hub table td:nth-child(-n+2), th:nth-child(-n+2)  {
-    display: none;
-  }
-}
-
-
-
-@media screen and (max-width: 580px)  {
-  .tscroll {
-    width: 100%;
-    overflow-x: scroll;
-    margin-bottom: 10px;
-    
-  }
-  
-  .tscroll table td:nth-child(3) {
-    position: sticky;
-    left: 0;
-    
-    
-  }
-  .tscroll table th {
-    position: sticky;
-    left: 0;
-    
-    
-  }
-  .stat-hub table th:nth-child(3)  {
-    visibility: hidden;
-  }
-
-  .tscroll td:nth-child(3) {
-    z-index: 1;
-    
-  }
-  .tscroll caption {
-    overflow-x: unset;
-  }
-
-  .stat-hub table td:nth-child(n + 4)  {
-    color: white;
-    overflow: hidden;
-    z-index: -1;
-    background-color: rgb(9, 28, 62, 0.8);
-  }
-}
-
-
-
-
-
-@media screen and (max-width: 813px) and (orientation : landscape) {
- .stat-hub table {
-    color: green;
-    
-  }
-}
-*/
-
-
-
-
-
-/*
-.tscroll {
   width: 100%;
-  overflow-x: scroll;
-  margin-bottom: 10px;
-  border: solid black 1px;
-}
-
-.tscroll table td:nth-child(3) {
-  position: sticky;
-  left: 0;
-  background-color: #ddd;
-}
-.tscroll table th {
-  position: sticky;
-  left: 0;
-  background-color: #ddd;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 
-
-
-
-
-.stat-hub {
-  display: flex;
-  justify-content: center;
-  
-  
-}
-
-.stat-hub table {
-  text-align: center;
-  
-  margin-top: 1rem;
-}
-
-.stat-hub caption {
-  font-size: 2rem;
-  
-}
-
-.stat-hub th,
-td {
-  padding: 0.5rem;
-}
-
-
-
-
-
-@media screen and (max-width: 750px)  {
-  .stat-hub table td:nth-child(-n+2), th:nth-child(-n+2)  {
-    display: none;
-  }
-}
-
-
-
-@media screen and (max-width: 580px)  {
-  .tscroll {
-    width: 100%;
-    overflow-x: scroll;
-    margin-bottom: 10px;
-    
-  }
-  
-  .tscroll table td:nth-child(3) {
-    position: sticky;
-    left: 0;
-    background-color: red;
-    z-index: 2;
-  }
-  .tscroll table th {
-    position: sticky;
-    left: 0;
-    
-    
-  }
-  .stat-hub table th:nth-child(3)  {
-    background-color: red;
-    
-    z-index: 2;
-  }
-
-  .stat-hub table td:nth-child(3+n)  {
-   z-index: 1;
-  }
-  .stat-hub table th:nth-child(3+n)  {
-    z-index: 1;
-   }
-
-   .stat-hub caption {
-     overflow-x: unset;
-   }
-
-  
- 
-
- 
-}
-
-
-
-
-
-@media screen and (max-width: 813px) and (orientation : landscape) {
- .stat-hub table {
-    color: green;
-    
-  }
-}
-
-
-
-
-
-
-*/

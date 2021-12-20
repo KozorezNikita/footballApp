@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import MyInput from "./UI/input/MyInput";
 import MySelect from "./UI/select/MySelect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faFutbol } from "@fortawesome/free-solid-svg-icons";

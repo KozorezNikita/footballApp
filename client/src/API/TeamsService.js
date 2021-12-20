@@ -2,7 +2,9 @@ import axios from "axios";
 
 export default class TeamsService {
   static async getTeamById(id) {
-    const response = await axios.get("http://localhost:8080/api/teams/" + id);
+    const response = await axios.get(
+      "https://pure-headland-63139.herokuapp.com/api/teams/" + id
+    );
     return response;
   }
 }
