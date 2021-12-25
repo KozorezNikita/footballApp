@@ -169,6 +169,29 @@ button {
   color: lightgray;
 }
 
+
+.modal-delete {
+  color: #cdfb0a;
+  font-size: 1.3rem;
+}
+
+.modal-delete button {
+  font-weight: bold;
+  
+  padding: 0.4rem;
+  border: 0.2rem solid black;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  width: 50%;
+}
+
+.modal-delete button:last-child {
+  background-color: red;
+}
+
+
+
 .player-list .position {
   font-size: 2rem;
   margin: 1rem 2rem;
@@ -416,9 +439,40 @@ button {
   padding: 2rem;
 }
 
-.stats p:first-child {
+.stats p:nth-child(2) {
   font-size: 2rem;
+  padding-top: 2rem;
 }
+
+.stats span:last-child {
+  padding-top: 2rem;
+}
+
+.stats span {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.stats button {
+  font-weight: bold;
+  padding: 0.4rem;
+  border: 0.2rem solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-select select {
+  border: 0.2rem solid black;
+  background-color: white;
+  color: black;
+}
+
 
 @media screen and (max-width: 735px) {
   .card-id img {
@@ -458,6 +512,9 @@ button {
     min-width: 250px;
   }
 }
+
+
+
 
 .stat-hub {
   display: flex;
@@ -558,5 +615,8 @@ td {
   border-radius: 0.5rem;
   cursor: pointer;
 }
+
+
+
 
 

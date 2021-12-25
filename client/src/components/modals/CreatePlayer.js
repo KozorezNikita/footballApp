@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import MySelect from "../UI/select/MySelect";
 
-function ModalPlayer({ players, setPlayers, modal, setModal }) {
+function CreatePlayer({ players, setPlayers, modal, setModal }) {
   const [create, setCreate] = useState({
     name: "",
     surname: "",
@@ -70,10 +70,10 @@ function ModalPlayer({ players, setPlayers, modal, setModal }) {
       />
 
       <button disabled={Object.values(create).some((val) => val === "")}>
-        Press to create a user!
+        Press to create a player!
       </button>
     </form>
   );
 }
 
-export default ModalPlayer;
+export default CreatePlayer;

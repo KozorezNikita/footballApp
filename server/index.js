@@ -2,6 +2,13 @@ require("dotenv").config();
 
 const express = require("express");
 
+
+
+const cors = require("cors");
+
+
+
+
 const playersRouter = require("./routes/players.routes");
 const statisticRouter = require("./routes/statistic.routes");
 const teamsRouter = require("./routes/teams.routes");
@@ -10,16 +17,23 @@ const PORT = process.env.PORT || 7000;
 
 const app = express();
 
+
+
+
+
+
 app.use(express.json());
+
+
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   next();
 });
+
+
 
 app.use("/api", playersRouter);
 app.use("/api", statisticRouter);

@@ -2,7 +2,7 @@ import MyModal from "../UI/Modal/MyModal";
 import MyInput from "../UI/input/MyInput";
 import axios from "axios";
 
-function ModalStatistic({ create, setCreate, modal, setModal }) {
+function CreateStatistic({ create, setCreate, modal, setModal }) {
   async function handleSubmit(e) {
     e.preventDefault();
     await axios.post(
@@ -60,8 +60,6 @@ function ModalStatistic({ create, setCreate, modal, setModal }) {
           <label>Player id</label>
           <MyInput value={create.player_id} placeholder="player_id" />
           <br />
-          <br />
-          <br />
           <button disabled={Object.values(create).some((val) => val === "")}>
             Press to create a statistic for player!
           </button>
@@ -76,4 +74,4 @@ function ModalStatistic({ create, setCreate, modal, setModal }) {
   );
 }
 
-export default ModalStatistic;
+export default CreateStatistic;

@@ -6,6 +6,7 @@ function PlayerCard({ player }) {
 
   return (
     <div className="player-card">
+      
       <img
         src={player.image}
         alt={player.surname}

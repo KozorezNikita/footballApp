@@ -8,7 +8,7 @@ import SearchBar from "../components/SearchBar";
 import MyLoader from "../components/UI/MyLoader/MyLoader";
 import TeamStatHub from "./TeamStatHub";
 import MyModal from "../components/UI/Modal/MyModal";
-import ModalPlayer from "../components/modals/ModalPlayer";
+import CreatePlayer from "../components/modals/CreatePlayer";
 
 function FootballApp() {
   const [players, setPlayers] = useState([]);
@@ -42,7 +42,7 @@ function FootballApp() {
   return (
     <div className="footballApp">
       <MyModal visible={modal} setVisible={setModal}>
-        <ModalPlayer
+        <CreatePlayer
           players={players}
           setPlayers={setPlayers}
           modal={modal}
