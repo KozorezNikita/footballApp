@@ -1,19 +1,30 @@
 import MyInput from "../UI/input/MyInput";
 import React from "react";
 import MyModal from "../UI/Modal/MyModal";
+import axios from "axios";
 
 
-function EditStatistic({ player, setPlayer, create, modal3, setModal3, handleSubmitStat }) {
+function EditStatistic({ player, setPlayer, create, modalEditStat, setModalEditStat}) {
+
+
+
+  async function editStat(e, player_id) {
+    e.preventDefault();
+    await axios.put(
+      `https://pure-headland-63139.herokuapp.com/api/statistic/${player_id}`, player
+    );
+    setModalEditStat(false);
+  }
   
 
   
 
   return (
     <div className="modal-stat">
-        <MyModal visible={modal3} setVisible={setModal3}>
+        <MyModal visible={modalEditStat} setVisible={setModalEditStat}>
 
 
-        <form className="form" onSubmit={e => handleSubmitStat(e, player.player_id)} >
+        <form className="form" onSubmit={e => editStat(e, player.player_id)} >
 
 
 
@@ -61,7 +72,7 @@ function EditStatistic({ player, setPlayer, create, modal3, setModal3, handleSub
           <br />
 
           <button disabled={Object.values(player).some((val) => val === "")}>
-            Press to create a statistic for player!
+            Press to edit a statistic for player
           </button>
         </form>
       </MyModal>

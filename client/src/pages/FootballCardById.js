@@ -15,10 +15,10 @@ import EditPlayer from "../components/modals/EditPlayer";
 function FootballCardById() {
   const params = useParams();
   const [player, setPlayer] = useState({});
-  const [modal, setModal] = useState(false);
-  const [modal1, setModal1] = useState(false);
-  const [modal2, setModal2] = useState(false);
-  const [modal3, setModal3] = useState(false);
+  const [modalCreateStat, setModalCreateStat] = useState(false);
+  const [modalEditPlayer, setModalEditPlayer] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const [modalEditStat, setModalEditStat] = useState(false);
   const [create, setCreate] = useState({
     goals: "",
     assists: "",
@@ -40,37 +40,13 @@ function FootballCardById() {
 
 
 
-  async function handleClick (id)  {
-      await axios.delete(`https://pure-headland-63139.herokuapp.com/api/players/${id}`)
-    .then(response => {
-      if (response.data !== null) {
-        alert("player deleted from a database")
-      }
-    })
-  }
+ 
 
-  async function handleSubmit(e, id) {
-    e.preventDefault();
-    await axios.put(
-      `https://pure-headland-63139.herokuapp.com/api/players/${id}`,
-      player
-    );
-    /*setPlayer({ goals: create.goals, assists: create.assists, yellow_cards: create.yellow_cards, red_cards: create.red_cards, average_rating: create.average_rating, player_id: params.id  })*/
-    setModal1(false);
-    /*setCreate({ goals: "", assists: "", yellow_cards: "", red_cards: "", average_rating: "", player_id: params.id  })*/
-  }
+  
 
 
 
-  async function handleSubmitStat(e, player_id) {
-    
-    e.preventDefault();
-    
-    await axios.put(
-      `https://pure-headland-63139.herokuapp.com/api/statistic/${player_id}`, player
-    );
-    setModal3(false);
-  }
+  
    
     return (
     <>
@@ -83,22 +59,22 @@ function FootballCardById() {
           <PlayerCard player={player} />
 
           <div className="stats">
-          <span onClick={() => setModal2(true)}><FontAwesomeIcon icon={faWindowClose}></FontAwesomeIcon></span>
+          <span onClick={() => setModalDelete(true)}><FontAwesomeIcon icon={faWindowClose}></FontAwesomeIcon></span>
             <p>{player.average_rating}</p>
             <p>Goals: {player.goals}</p>
             <p>Assists: {player.assists}</p>
             <p>Yellow cards: {player.yellow_cards}</p>
             <p>Red cards: {player.red_cards}</p>
-            <button onClick={() => setModal1(true)}>edit player</button>
-            <button onClick={() => setModal3(true)}>edit stats</button>
+            <button onClick={() => setModalEditPlayer(true)}>edit player</button>
+            <button onClick={() => setModalEditStat(true)}>edit stats</button>
           </div>
             
 
         </div>
 
-        <EditStatistic player={player} setPlayer={setPlayer} create={create} modal3={modal3} setModal3={setModal3} handleSubmitStat={handleSubmitStat} />
-        <EditPlayer player={player} setPlayer={setPlayer}  modal1={modal1} setModal1={setModal1} handleSubmit={handleSubmit} />
-        <DeletePlayer player={player}   modal2={modal2} setModal2={setModal2} handleClick={handleClick} />
+        <EditStatistic player={player} setPlayer={setPlayer} create={create} modalEditStat={modalEditStat} setModalEditStat={setModalEditStat} />
+        <EditPlayer player={player} setPlayer={setPlayer}  modalEditPlayer={modalEditPlayer} setModalEditPlayer={setModalEditPlayer} />
+        <DeletePlayer player={player}   modalDelete={modalDelete} setModalDelete={setModalDelete} />
 
         
         </div>
@@ -106,8 +82,8 @@ function FootballCardById() {
         <CreateStatistic
           create={create}
           setCreate={setCreate}
-          modal={modal}
-          setModal={setModal}
+          modalCreateStat={modalCreateStat}
+          setModalCreateStat={setModalCreateStat}
         />
       )}
     </>

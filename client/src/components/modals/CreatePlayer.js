@@ -12,7 +12,7 @@ function CreatePlayer({ players, setPlayers, modal, setModal }) {
     team_id: "",
   });
 
-  async function handleSubmit(e) {
+  async function createPlayer(e) {
     e.preventDefault();
     await axios.post(
       "https://pure-headland-63139.herokuapp.com/api/players",
@@ -24,7 +24,7 @@ function CreatePlayer({ players, setPlayers, modal, setModal }) {
   }
 
   return (
-    <form className="modal-player" onSubmit={handleSubmit}>
+    <form className="modal-player" onSubmit={createPlayer}>
       <label>Name</label>
       <MyInput
         value={create.name}

@@ -31,6 +31,7 @@ function TeamStatHub({ players, teams }) {
             { value: "assists", name: "assists" },
             { value: "yellow_cards", name: "yellow cards" },
             { value: "red_cards", name: "red cards" },
+            { value: "average_rating", name: "average rating" },
           ]}
         />
 

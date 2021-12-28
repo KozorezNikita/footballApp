@@ -2,19 +2,31 @@ import MyInput from "../UI/input/MyInput";
 import React from "react";
 import MyModal from "../UI/Modal/MyModal";
 import MySelect from "../UI/select/MySelect";
+import axios from "axios";
 
 
-function EditPlayer({ player, setPlayer, modal1, setModal1, handleSubmit }) {
+function EditPlayer({ player, setPlayer, modalEditPlayer, setModalEditPlayer }) {
   
 
+
+  async function editPlayer(e, id) {
+    e.preventDefault();
+    await axios.put(
+      `https://pure-headland-63139.herokuapp.com/api/players/${id}`,
+      player
+    );
+    /*setPlayer({ goals: create.goals, assists: create.assists, yellow_cards: create.yellow_cards, red_cards: create.red_cards, average_rating: create.average_rating, player_id: params.id  })*/
+    setModalEditPlayer(false);
+    /*setCreate({ goals: "", assists: "", yellow_cards: "", red_cards: "", average_rating: "", player_id: params.id  })*/
+  }
   
 
   return (
     <div className="modal-stat">
-        <MyModal visible={modal1} setVisible={setModal1}>
+        <MyModal visible={modalEditPlayer} setVisible={setModalEditPlayer}>
 
 
-        <form className="form" onSubmit={e => handleSubmit(e, player.id)} >
+        <form className="form" onSubmit={e => editPlayer(e, player.id)} >
 
 
 
@@ -64,7 +76,7 @@ function EditPlayer({ player, setPlayer, modal1, setModal1, handleSubmit }) {
 
         
           <button disabled={Object.values(player).some((val) => val === "")}>
-            Press to create a statistic for player!
+            Press to edit a statistic for player
           </button>
         </form>
       </MyModal>
