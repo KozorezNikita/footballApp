@@ -27,15 +27,20 @@ function FootballCardById() {
     average_rating: "",
     player_id: params.id,
   });
+
+
+  const [playerId, setPlayerId] = useState(params.id);
   
+  
+
   const [fetchPlayersById, isLoading] = useFetching(async (id) => {
     const response = await PlayersService.getById(id);
     setPlayer(response.data);
   });
 
   useEffect(() => {
-    fetchPlayersById(params.id);
-  }, []);
+    fetchPlayersById(playerId);
+  }, [playerId]);
 
 
 
@@ -65,8 +70,10 @@ function FootballCardById() {
             <p>Assists: {player.assists}</p>
             <p>Yellow cards: {player.yellow_cards}</p>
             <p>Red cards: {player.red_cards}</p>
+            
             <button onClick={() => setModalEditPlayer(true)}>edit player</button>
             <button onClick={() => setModalEditStat(true)}>edit stats</button>
+            <button onClick={() => setPlayerId(parseFloat(playerId) + 1) }>Next player</button>
           </div>
             
 

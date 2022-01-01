@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import MySelect from "../UI/select/MySelect";
 
-function CreatePlayer({ players, setPlayers, modal, setModal }) {
+function CreatePlayer({ players, setPlayers, modal, setModal, allTeams, setAllTeams }) {
   const [create, setCreate] = useState({
     name: "",
     surname: "",
@@ -63,10 +63,10 @@ function CreatePlayer({ players, setPlayers, modal, setModal }) {
         value={create.team_id}
         onChange={(sort) => setCreate({ ...create, team_id: Number(sort) })}
         defaultValue="select team"
-        options={[
-          { value: 1, name: "Olympique Lyonnais" },
-          { value: 3, name: "Lille" },
-        ]}
+        options={allTeams.map(team => ({
+          value: team.id,
+          name: team.team
+        }))}
       />
 
       <button disabled={Object.values(create).some((val) => val === "")}>

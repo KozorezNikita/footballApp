@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function PlayerCard({ player }) {
+function PlayerCard({ player, index }) {
   const router = useHistory();
 
   return (

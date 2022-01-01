@@ -7,4 +7,11 @@ export default class TeamsService {
     );
     return response;
   }
+
+  static async getTeams() {
+    const response = await axios.get(
+      "https://pure-headland-63139.herokuapp.com/api/teams"
+    );
+    return response;
+  }
 }

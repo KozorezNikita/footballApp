@@ -1,24 +1,24 @@
 import { useState } from "react";
 import MySelect from "../components/UI/select/MySelect";
 
-function TeamStatHub({ players, teams }) {
+function TeamStatHub({ players, team }) {
   const [filter, setFilter] = useState("goals");
 
   return (
     <div className="team-hub">
       <div className="club">
-        <img src={teams.badge} alt={teams.surname} /> <h1>{teams.team}</h1>
+        <img src={team.badge} alt={team.surname} /> <h1>{team.team}</h1>
         <p>
-          Nickname: <span>{teams.nickname}</span>
+          Nickname: <span>{team.nickname}</span>
         </p>
         <p>
-          Year founded: <span>{teams.year}</span>
+          Year founded: <span>{team.year}</span>
         </p>
         <p>
-          Stadium: <span>{teams.stadium}</span>
+          Stadium: <span>{team.stadium}</span>
         </p>{" "}
         <p>
-          History overall: <span>{teams.description}</span>
+          History overall: <span>{team.description}</span>
         </p>{" "}
       </div>
       <div className="team-stat">

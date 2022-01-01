@@ -12,7 +12,7 @@ function PlayersList({ players }) {
       <div>
         {players.map((player) =>
           player.position === "goalkeeper" ? (
-            <PlayerCard player={player} key={player.id} />
+            <PlayerCard player={player} key={player.id}/>
           ) : null
         )}
       </div>
@@ -20,7 +20,7 @@ function PlayersList({ players }) {
       <div>
         {players.map((player) =>
           player.position === "defender" ? (
-            <PlayerCard player={player} key={player.id} />
+            <PlayerCard player={player} key={player.id}/>
           ) : null
         )}
       </div>
@@ -28,7 +28,7 @@ function PlayersList({ players }) {
       <div>
         {players.map((player) =>
           player.position === "midfielder" ? (
-            <PlayerCard player={player} key={player.id} />
+            <PlayerCard player={player} key={player.id}/>
           ) : null
         )}
       </div>
@@ -36,7 +36,7 @@ function PlayersList({ players }) {
       <div>
         {players.map((player) =>
           player.position === "forward" ? (
-            <PlayerCard player={player} key={player.id} />
+            <PlayerCard player={player} key={player.id}/>
           ) : null
         )}
       </div>

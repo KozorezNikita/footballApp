@@ -2,10 +2,10 @@ const db = require("../db");
 
 class teamsController {
   async createTeam(req, res) {
-    const { team } = req.body;
+    const { team, year, nickname, stadium, badge, description } = req.body;
     const newTeam = await db.query(
-      "INSERT INTO teams (team) values ($1) RETURNING *",
-      [team]
+      "INSERT INTO teams (team, year, nickname, stadium, badge, description ) values ($1, $2, $3, $4, $5, $6 ) RETURNING *",
+      [ team, year, nickname, stadium, badge, description ]
     );
     res.json(newTeam.rows[0]);
   }
