@@ -3,7 +3,7 @@ import axios from "axios";
 export default class PlayersService {
   static async getAll(team_id) {
     const response = await axios.get(
-      "https://pure-headland-63139.herokuapp.com/api/players/statistic",
+      `${process.env.REACT_APP_BASE_URL}/api/players/statistic`,
       {
         params: {
           team_id: team_id,
@@ -15,14 +15,14 @@ export default class PlayersService {
 
   static async getById(id) {
     const response = await axios.get(
-      "https://pure-headland-63139.herokuapp.com/api/players/statistic/" + id
+      `${process.env.REACT_APP_BASE_URL}/api/players/statistic/` + id
     );
     return response;
   }
 
   static async getPlayersStatistic() {
     const response = await axios.get(
-      "https://pure-headland-63139.herokuapp.com/api/players/statistic"
+      `${process.env.REACT_APP_BASE_URL}/api/players/statistic`
     );
     return response;
   }

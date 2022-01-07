@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import axios from "axios";
 import MySelect from "../UI/select/MySelect";
 
-function CreatePlayer({ players, setPlayers, modal, setModal, allTeams, setAllTeams }) {
+function CreatePlayer({
+  players,
+  setPlayers,
+  modal,
+  setModal,
+  allTeams,
+  setAllTeams,
+}) {
   const [create, setCreate] = useState({
     name: "",
     surname: "",
@@ -14,10 +21,7 @@ function CreatePlayer({ players, setPlayers, modal, setModal, allTeams, setAllTe
 
   async function createPlayer(e) {
     e.preventDefault();
-    await axios.post(
-      "https://pure-headland-63139.herokuapp.com/api/players",
-      create
-    );
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/api/players`, create);
     /*setPlayers(players.push({ name: create.name, surname: create.surname, image: create.image, position: create.position, team_id: create.team_id  }))*/
     setModal(false);
     /*setCreate({ name: "", surname: "", image: "", position: "", team_id: ""});*/
@@ -51,10 +55,10 @@ function CreatePlayer({ players, setPlayers, modal, setModal, allTeams, setAllTe
         onChange={(sort) => setCreate({ ...create, position: sort })}
         defaultValue="select position"
         options={[
-          { value: "goalkeeper", name: "goalkeeper" },
-          { value: "defender", name: "defender" },
-          { value: "midfielder", name: "midfielder" },
-          { value: "forward", name: "forward" },
+          { value: 1, name: "goalkeeper" },
+          { value: 2, name: "defender" },
+          { value: 3, name: "midfielder" },
+          { value: 4, name: "forward" },
         ]}
       />
 
@@ -63,9 +67,9 @@ function CreatePlayer({ players, setPlayers, modal, setModal, allTeams, setAllTe
         value={create.team_id}
         onChange={(sort) => setCreate({ ...create, team_id: Number(sort) })}
         defaultValue="select team"
-        options={allTeams.map(team => ({
+        options={allTeams.map((team) => ({
           value: team.id,
-          name: team.team
+          name: team.team,
         }))}
       />
 

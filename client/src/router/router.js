@@ -11,8 +11,4 @@ export const footballRoutes = [
   { path: "/teamStatHub", component: TeamStatHub, exact: true },
 ];
 
-export const loginRoutes = [
-  { path: "/Login", component: Login, exact: true },
-  
-];
-
+export const loginRoutes = [{ path: "/Login", component: Login, exact: true }];

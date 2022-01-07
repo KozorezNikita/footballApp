@@ -2,13 +2,15 @@ import MyModal from "../UI/Modal/MyModal";
 import MyInput from "../UI/input/MyInput";
 import axios from "axios";
 
-function CreateStatistic({ create, setCreate, modalCreateStat, setModalCreateStat }) {
+function CreateStatistic({
+  create,
+  setCreate,
+  modalCreateStat,
+  setModalCreateStat,
+}) {
   async function createStatistic(e) {
     e.preventDefault();
-    await axios.post(
-      "https://pure-headland-63139.herokuapp.com/api/statistic",
-      create
-    );
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/api/statistic`, create);
     /*setPlayer({ goals: create.goals, assists: create.assists, yellow_cards: create.yellow_cards, red_cards: create.red_cards, average_rating: create.average_rating, player_id: params.id  })*/
     setModalCreateStat(false);
     /*setCreate({ goals: "", assists: "", yellow_cards: "", red_cards: "", average_rating: "", player_id: params.id  })*/

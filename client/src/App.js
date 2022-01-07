@@ -5,17 +5,14 @@ import Navbar from "./components/UI/Navbar/Navbar";
 import "./styles/App.css";
 import FootballProvider from "./context/FootballContext";
 
-
-
-
 function App() {
   return (
     <FootballProvider>
-    <HashRouter basename="/">
-      <Navbar />
-      <FootballRouter />
-    </HashRouter>
-    </ FootballProvider>
+      <HashRouter basename="/">
+        <Navbar />
+        <FootballRouter />
+      </HashRouter>
+    </FootballProvider>
   );
 }
 

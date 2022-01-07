@@ -16,7 +16,7 @@ create TABLE players (
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     image TEXT NOT NULL,
-    position VARCHAR(255) NOT NULL,
+    position INTEGER NOT NULL,
     team_id INTEGER NOT NULL, 
     FOREIGN KEY (team_id) REFERENCES teams (id)
 );

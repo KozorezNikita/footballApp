@@ -11,32 +11,32 @@ function PlayersList({ players }) {
       <p className="position">Goalkeepers</p>
       <div>
         {players.map((player) =>
-          player.position === "goalkeeper" ? (
-            <PlayerCard player={player} key={player.id}/>
+          player.position === 1 ? (
+            <PlayerCard player={player} key={player.id} />
           ) : null
         )}
       </div>
       <p className="position">Defenders</p>
       <div>
         {players.map((player) =>
-          player.position === "defender" ? (
-            <PlayerCard player={player} key={player.id}/>
+          player.position === 2 ? (
+            <PlayerCard player={player} key={player.id} />
           ) : null
         )}
       </div>
       <p className="position">Midfielders</p>
       <div>
         {players.map((player) =>
-          player.position === "midfielder" ? (
-            <PlayerCard player={player} key={player.id}/>
+          player.position === 3 ? (
+            <PlayerCard player={player} key={player.id} />
           ) : null
         )}
       </div>
       <p className="position">Forwards</p>
       <div>
         {players.map((player) =>
-          player.position === "forward" ? (
-            <PlayerCard player={player} key={player.id}/>
+          player.position === 4 ? (
+            <PlayerCard player={player} key={player.id} />
           ) : null
         )}
       </div>

@@ -3,32 +3,27 @@ import React from "react";
 import MyModal from "../UI/Modal/MyModal";
 import axios from "axios";
 
-
-function EditStatistic({ player, setPlayer, create, modalEditStat, setModalEditStat}) {
-
-
-
+function EditStatistic({
+  player,
+  setPlayer,
+  create,
+  modalEditStat,
+  setModalEditStat,
+}) {
   async function editStat(e, player_id) {
     e.preventDefault();
     await axios.put(
-      `https://pure-headland-63139.herokuapp.com/api/statistic/${player_id}`, player
+      `${process.env.REACT_APP_BASE_URL}/api/statistic/${player_id}`,
+      player
     );
     setModalEditStat(false);
   }
-  
-
-  
 
   return (
     <div className="modal-stat">
-        <MyModal visible={modalEditStat} setVisible={setModalEditStat}>
-
-
-        <form className="form" onSubmit={e => editStat(e, player.player_id)} >
-
-
-
-        <label>Goals</label>
+      <MyModal visible={modalEditStat} setVisible={setModalEditStat}>
+        <form className="form" onSubmit={(e) => editStat(e, player.player_id)}>
+          <label>Goals</label>
           <MyInput
             value={player.goals}
             placeholder="goals"
@@ -76,10 +71,7 @@ function EditStatistic({ player, setPlayer, create, modalEditStat, setModalEditS
           </button>
         </form>
       </MyModal>
-      </div>
-
-
-
+    </div>
   );
 }
 

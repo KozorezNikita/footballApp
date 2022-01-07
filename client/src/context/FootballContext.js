@@ -7,14 +7,16 @@ const FootballProvider = (props) => {
   const [toggle, setToggle] = useState(true);
   const [teamId, setTeamId] = useState(1);
 
-    useEffect(() => {
-        if (localStorage.getItem("auth")) {
-            setAuth(true)
-        }
-    }, [])
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setAuth(true);
+    }
+  }, []);
 
   return (
-    <FootballContext.Provider value={{ auth, setAuth, toggle, setToggle, teamId, setTeamId }}>
+    <FootballContext.Provider
+      value={{ auth, setAuth, toggle, setToggle, teamId, setTeamId }}
+    >
       {props.children}
     </FootballContext.Provider>
   );

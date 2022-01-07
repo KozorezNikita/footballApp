@@ -5,7 +5,6 @@ import MySelect from "../UI/select/MySelect";
 
 function CreateTeam({ players, setPlayers, modal, setModal }) {
   const [create, setCreate] = useState({
-    
     team: "",
     year: "",
     nickname: "",
@@ -16,10 +15,7 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
 
   async function createTeam(e) {
     e.preventDefault();
-    await axios.post(
-      "https://pure-headland-63139.herokuapp.com/api/teams",
-      create
-    );
+    await axios.post(`${process.env.REACT_APP_BASE_URL}/api/teams`, create);
     /*setPlayers(players.push({ name: create.name, surname: create.surname, image: create.image, position: create.position, team_id: create.team_id  }))*/
     setModal(false);
     /*setCreate({ name: "", surname: "", image: "", position: "", team_id: ""});*/
@@ -47,7 +43,7 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
         onChange={(e) => setCreate({ ...create, nickname: e.target.value })}
       />
 
-    <label>Stadium</label>
+      <label>Stadium</label>
       <MyInput
         value={create.stadium}
         placeholder="stadium"
@@ -65,7 +61,6 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
         placeholder="description"
         onChange={(e) => setCreate({ ...create, description: e.target.value })}
       />
-      
 
       <button disabled={Object.values(create).some((val) => val === "")}>
         Press to create a team!

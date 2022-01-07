@@ -5,7 +5,7 @@ class teamsController {
     const { team, year, nickname, stadium, badge, description } = req.body;
     const newTeam = await db.query(
       "INSERT INTO teams (team, year, nickname, stadium, badge, description ) values ($1, $2, $3, $4, $5, $6 ) RETURNING *",
-      [ team, year, nickname, stadium, badge, description ]
+      [team, year, nickname, stadium, badge, description]
     );
     res.json(newTeam.rows[0]);
   }
