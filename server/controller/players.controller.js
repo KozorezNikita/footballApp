@@ -26,40 +26,29 @@ class playersController {
     res.json(playerStats.rows[0]);
   }
 
-  async getNextPlayerStats(req, res) {
+ async getNextPlayerStats(req, res) {
     const playerId = req.params.id;
     const team_id = req.query.team_id;
-
+    
     let playerStats = await db.query(
+      
       "SELECT players.id, players.name, players.surname, players.image, players.position, players.team_id, statistic.goals, statistic.assists, statistic.yellow_cards, statistic.red_cards, statistic.average_rating, statistic.player_id   from players INNER JOIN statistic on players.id = statistic.player_id where team_id =$2 AND (players.position, players.id) >  ((SELECT position from players WHERE id = $1), $1) ORDER BY players.position , players.id LIMIT 1 ",
       [playerId, team_id]
+      
     );
 
     if (playerStats.rows.length === 0) {
-      playerStats = await db.query(
+       playerStats = await db.query(
         "SELECT players.id, players.name, players.surname, players.image, players.position, players.team_id, statistic.goals, statistic.assists, statistic.yellow_cards, statistic.red_cards, statistic.average_rating, statistic.player_id   from players INNER JOIN statistic on players.id = statistic.player_id where team_id = $1 ORDER BY players.position , players.id LIMIT 1",
         [team_id]
       );
+
     }
-
-    res.json(playerStats.rows[0]);
-  }
-
-  /*
-"SELECT players.id, players.name, players.surname, players.image, players.position, players.team_id, statistic.goals, statistic.assists, statistic.yellow_cards, statistic.red_cards, statistic.average_rating, statistic.player_id   from players INNER JOIN statistic on players.id = statistic.player_id where (players.position, players.id) >  ((SELECT position from players WHERE id = $1), $1) ORDER BY players.position , players.id ",
-async getNextPlayerStats(req, res) {
-    const playerId = req.params.id;
-    const team_id = req.query.team_id;
-    const playersId = req.params.id;
-    const playerStats = await db.query(
-      "SELECT players.id, players.name, players.surname, players.image, players.position, players.team_id, statistic.goals, statistic.assists, statistic.yellow_cards, statistic.red_cards, statistic.average_rating, statistic.player_id   from players INNER JOIN statistic on players.id = statistic.player_id where team_id =$2 AND (players.position, players.id) >  ((SELECT position from players WHERE id = $1), $1) ORDER BY players.position , players.id ",
-      [playerId, team_id]
-    );
     
     res.json(playerStats.rows[0]);
     
   }
-*/
+
 
   async createPlayer(req, res) {
     const { name, surname, image, position, team_id } = req.body;
@@ -115,46 +104,3 @@ async getNextPlayerStats(req, res) {
 
 module.exports = new playersController();
 
-/*
- async deletePlayer(req, res) {
-    const id = req.params.id;
-    const deletedPlayer = await db.query("DELETE FROM players where id = $1", [
-      id,
-    ]);
-    res.json(deletedPlayer.rows[0]);
-  }
-  
-
-
- async updatePlayer(req, res) {
-    const { name, surname, image, position, team_id } = req.body;
-    const id = req.params.id;
-    const updatedPlayer = await db.query(
-      "UPDATE players set name = $1, surname = $2 , image = $3, position = $4, team_id = $5 where id = $6 RETURNING *",
-      [name, surname, image, position, team_id, id]
-    );
-    res.json(updatedPlayer.rows[0]);
-  }
-
-
-
-
-  
-  async updateOnePlayerStat(req, res) {
-    const { name, surname, image, position, team_id, goals, assists, yellow_cards, red_cards, average_rating } = req.body;
-    const playersId = req.params.id;
-    const updatedPlayer = await db.query(
-      "UPDATE players set name = $1, surname = $2 , image = $3, position = $4, team_id = $5 , goals = $6, assists = $7, yellow_cards = $8, red_cards = $9, average_rating = $10 where players.id = 11 RETURNING *",
-      [name, surname, image, position, team_id, goals, assists, yellow_cards, red_cards, average_rating, playersId]
-    );
-    res.json(updatedPlayer.rows[0]);
-  }
-
-
-
-
-  
-  "ALTER TABLE statistic DROP CONSTRAINT player_id; FOREIGN KEY (player_id) REFERENCES players(id) ON DELETE CASCADE where id = $1"
-  
-  
-  */
