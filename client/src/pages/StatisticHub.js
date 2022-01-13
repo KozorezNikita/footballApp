@@ -87,7 +87,7 @@ function StatisticHub() {
                     <td>{player.assists}</td>
                     <td>{player.yellow_cards}</td>
                     <td>{player.red_cards}</td>
-                    <td>{player.average_rating}</td>{" "}
+                    <td>{player.average_rating}</td>
                   </tr>
                 ))}
               </tbody>

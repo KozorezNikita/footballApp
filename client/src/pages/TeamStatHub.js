@@ -38,10 +38,10 @@ function TeamStatHub({ players, team }) {
         {[...players]
           .sort((a, b) => b[filter] - a[filter])
           .map((player, index) => (
-            <>
+            <div key={player.name}>
               {" "}
               {index === 0 ? (
-                <div className="player-card">
+                <div className="player-card" >
                   <img src={player.image} alt={player.surname} />{" "}
                   <div className="info">
                     <p>{index + 1} .</p>
@@ -53,7 +53,7 @@ function TeamStatHub({ players, team }) {
                   </div>
                 </div>
               ) : (
-                <div className="others">
+                <div className="others" >
                   <p>{index + 1} .</p>{" "}
                   <p>
                     {" "}
@@ -63,7 +63,7 @@ function TeamStatHub({ players, team }) {
                   <p>{player[filter]}</p>{" "}
                 </div>
               )}{" "}
-            </>
+            </div>
           ))
           .slice(0, 5)}
       </div>

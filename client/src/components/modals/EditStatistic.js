@@ -63,7 +63,7 @@ function EditStatistic({
             }
           />
           <label>Player id</label>
-          <MyInput value={create.player_id} placeholder="player_id" />
+          <MyInput readOnly value={create.player_id} placeholder="player_id" />
           <br />
 
           <button disabled={Object.values(player).some((val) => val === "")}>
