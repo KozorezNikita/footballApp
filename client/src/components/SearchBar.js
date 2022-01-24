@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faFutbol } from "@fortawesome/free-solid-svg-icons";
 import { useFetching } from "../hooks/useFetching";
 import TeamsService from "../API/TeamsService";
+import CountUp from "react-countup";
 
 function SearchBar({
   players,
@@ -27,7 +28,7 @@ function SearchBar({
           name: team.team,
         }))}
       />
-      <div>
+      <div className="routes">
         <span onClick={() => setToggle(true)}>
           <FontAwesomeIcon icon={faUsers}></FontAwesomeIcon>
         </span>
@@ -35,7 +36,7 @@ function SearchBar({
           <FontAwesomeIcon icon={faFutbol}></FontAwesomeIcon>
         </span>
       </div>
-      <p> {players.length} </p>
+      <div ><CountUp end={players.length} duration={1.5} /></div>
     </div>
   );
 }

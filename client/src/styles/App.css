@@ -65,6 +65,37 @@
   }
 }
 
+
+.footer {
+  
+  width: 100vw;
+ /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  font-size: 1.5rem;*/
+  background-color: #091c3e;
+  color: #cdfb0a;
+  font-size: 1.5rem;
+  padding: 0 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer p {
+  padding: 0.3rem;
+}
+
+@media screen and (max-width: 550px) {
+  .footer {
+    font-size: 1.2rem;
+  }
+  
+}
+
+
 .searchbar {
   width: 100vw;
   display: flex;
@@ -79,10 +110,18 @@
 }
 
 .searchbar span {
-  margin: 0 1rem;
   font-size: 2rem;
   color: #cdfb0a;
 }
+
+.searchbar .routes span {
+  padding: 0 1rem;
+}
+
+.searchbar  div:last-child {
+  width: 2rem;
+}
+
 
 @media screen and (max-width: 550px) {
   .searchbar span {

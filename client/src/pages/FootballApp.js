@@ -11,6 +11,7 @@ import MyModal from "../components/UI/Modal/MyModal";
 import CreatePlayer from "../components/modals/CreatePlayer";
 import { FootballContext } from "../context/FootballContext";
 import CreateTeam from "../components/modals/CreateTeam";
+import Footer from "../components/UI/Footer/Footer";
 
 function FootballApp() {
   const [players, setPlayers] = useState([]);
@@ -104,6 +105,7 @@ function FootballApp() {
             {playerError && <h1>Error happened ${playerError}</h1>}
           </div>
           <PlayersList players={sortedAndSearchedPlayers} />{" "}
+          <Footer />
         </>
       ) : (
         <TeamStatHub players={sortedAndSearchedPlayers} team={team} />

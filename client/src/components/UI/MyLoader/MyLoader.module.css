@@ -1,4 +1,4 @@
-.myLoader {
+/*.myLoader {
   border: 16px solid #091c3e;
   border-radius: 50%;
   border-top: 16px solid #cdfb0a;
@@ -7,6 +7,57 @@
   height: 120px;
   animation: spin 1s linear infinite;
 }
+
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.myLoader {
+  color: #091c3e;
+  font-size: 4rem;
+  
+  
+  
+  padding: 0.5rem;
+  
+  animation: spin 1s linear infinite;
+}
+
+*/
+.loader {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  
+}
+
+.myLoader {
+  color: #091c3e;
+  font-size: 4rem;
+  padding: 0.5rem;
+  animation: spin 1s linear infinite;
+  
+}
+
+
+
 
 @keyframes spin {
   0% {
