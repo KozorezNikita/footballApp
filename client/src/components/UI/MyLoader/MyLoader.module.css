@@ -38,6 +38,24 @@
   animation: spin 1s linear infinite;
 }
 
+
+
+.loader {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  
+}
+
+.myLoader {
+  color: #091c3e;
+  font-size: 4rem;
+  padding: 0.5rem;
+  animation: spin 1s linear infinite;
+  
+}
 */
 .loader {
   display: flex;

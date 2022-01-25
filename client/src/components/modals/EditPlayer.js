@@ -71,7 +71,7 @@ function EditPlayer({
           />
 
           <button disabled={Object.values(player).some((val) => val === "")}>
-            Press to edit a statistic for player
+            Press to edit information of player
           </button>
         </form>
       </MyModal>
