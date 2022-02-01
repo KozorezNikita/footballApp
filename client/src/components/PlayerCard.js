@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import CardHover from "./CardHover";
+
 
 function PlayerCard({ player, index }) {
   const router = useHistory();
@@ -14,8 +16,11 @@ function PlayerCard({ player, index }) {
 
       <p>{player.name}</p>
       <p className="surname">{player.surname}</p>
+      <CardHover player={player} />
     </div>
+    
   );
 }
 
 export default PlayerCard;
+

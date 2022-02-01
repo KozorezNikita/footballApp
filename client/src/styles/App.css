@@ -107,6 +107,7 @@
   position: sticky;
   top: 0;
   color: #cdfb0a;
+  z-index: 1;
 }
 
 .searchbar span {
@@ -297,6 +298,8 @@ button {
   cursor: pointer;
 }
 
+
+
 .player-card {
   min-width: 300px;
   max-width: 350px;
@@ -311,6 +314,53 @@ button {
   animation: fadeIn 1s ease-in-out;
   background-color: #091c3e;
   color: #cdfb0a;
+  position: relative;
+}
+
+.player-card .card-info {
+  display: none;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  font-size: 1.5rem;
+  color: white;
+  
+}
+
+.player-card:hover .card-info {
+  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-info div:last-child p {
+  color: #cdfb0a;
+}
+
+
+.player-card:hover .card-info div:first-child span {
+  color: yellow;
+}
+
+.player-card:hover .card-info div:nth-child(2) span {
+  color: red;
+}
+
+.player-card:hover .card-info div:first-child .goals {
+  color: rgba(20, 231, 20, 0.884);
+}
+
+.player-card:hover .card-info div:nth-child(2) .assists {
+  color: blue;
+}
+
+.card-id .player-card:hover .card-info{
+  display: none;
 }
 
 .player-card .surname {
@@ -318,19 +368,25 @@ button {
   font-size: 1.5rem;
 }
 
+
 @media screen and (max-width: 1861px) {
+  
+
   .player-card {
     flex: 0 0 calc((100% / 4) - (8rem / 4));
   }
 }
 
 @media screen and (max-width: 1360px) {
+  
   .player-card {
     flex: 0 0 calc((100% / 3) - (6rem / 3));
   }
 }
 
 @media screen and (max-width: 1029px) {
+ 
+
   .player-card {
     min-width: 250px;
     max-width: 350px;
