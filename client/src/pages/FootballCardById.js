@@ -65,7 +65,19 @@ function FootballCardById() {
       ) : player !== "" ? (
         <div className="modal-select">
           <div className="card-id">
-            <PlayerCard player={player} />
+         
+         
+         
+         
+          <div className="info">
+            <img
+              src={player.image}
+              alt={player.surname}
+              onClick={() => router.push(`/footballApp/${player.id}`)}
+            />
+            <p >{player.name}</p>
+            <p className="surname">{player.surname}</p>
+          </div>
 
             <div className="stats">
               <span onClick={() => setModalDelete(true)}>
@@ -118,3 +130,9 @@ function FootballCardById() {
 }
 
 export default FootballCardById;
+
+
+
+/*
+<PlayerCard player={player} />
+*/

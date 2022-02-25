@@ -22,6 +22,7 @@ function FootballApp() {
   const [modal, setModal] = useState(false);
   const [selected, setSelected] = useState({ text: "" });
   const [toggleModal, setToggleModal] = useState(false);
+  
 
   const [fetchPlayers, isPlayersLoading, playerError] = useFetching(
     async () => {

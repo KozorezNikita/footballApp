@@ -19,7 +19,7 @@ function CardHover( {player} ) {
       <FontAwesomeIcon icon={faCopy}></FontAwesomeIcon>
     </span> 
     <p>{player.red_cards}</p></div>
-    <div><p>{player.average_rating}</p></div>
+    <div><p>{player.average_rating.toFixed(2)}</p></div>
         </>  : 
     <>
     <div>

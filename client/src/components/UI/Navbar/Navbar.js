@@ -1,25 +1,33 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { FootballContext } from "../../../context/FootballContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
-  const { auth, setAuth, toggle, setToggle } = useContext(FootballContext);
+  const { auth, setAuth, toggle, setToggle, token, setToken  } = useContext(FootballContext);
+  const history = useHistory();
+  
 
-  const handleLogout = (e) => {
-    setAuth(false);
-    localStorage.removeItem("auth");
+
+  const handleLogout = () => {
+
+    localStorage.removeItem("token");
+    setToken("");
+    history.push("/login");
   };
 
-  return (
+
+
+  return token ? (
     <div className="navbar">
       <p>Ligue 1</p>
       <div className="navlinks">
-        {auth ? (
-          <>
+        
+          
+          
             <Link
-              to="/FootballApp"
+              to="/footballApp"
               onClick={() => {
                 if (toggle === false) {
                   setToggle(true);
@@ -28,7 +36,48 @@ function Navbar() {
             >
               Club
             </Link>
-            <Link to="/StatisticHub">StatHub</Link>
+            <Link to="/tableHub">StatHub</Link>
+            <span>
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                onClick={handleLogout}
+              ></FontAwesomeIcon>
+            </span>
+          </ div>
+        </ div>
+        ) : (
+          <div className="navbar">
+      <p>Ligue 1</p>
+      <p onClick={() => history.push("/login")}>Sign up</p>
+
+    </div>
+  );
+}
+
+export default Navbar;
+
+
+
+
+/* 
+return (
+    <div className="navbar">
+      <p>Ligue 1</p>
+      <div className="navlinks">
+        {token !== "" && token !== null ? (
+          <>
+          
+            <Link
+              to="/footballApp"
+              onClick={() => {
+                if (toggle === false) {
+                  setToggle(true);
+                }
+              }}
+            >
+              Club
+            </Link>
+            <Link to="/tableHub">StatHub</Link>
             <span>
               <FontAwesomeIcon
                 icon={faSignOutAlt}
@@ -38,13 +87,12 @@ function Navbar() {
           </>
         ) : (
           <>
-            <Link to="/FootballApp">Club</Link>
-            <Link to="/StatisticHub">StatHub</Link>
+            
+            <Link to="/footballApp">Club</Link>
+            <Link to="/tableHub">StatHub</Link>
           </>
         )}
       </div>
     </div>
-  );
-}
 
-export default Navbar;
+    */

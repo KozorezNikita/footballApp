@@ -56,9 +56,10 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
         onChange={(e) => setCreate({ ...create, badge: e.target.value })}
       />
       <label>Description</label>
-      <MyInput
+      <textarea
+      
         value={create.description}
-        placeholder="description"
+        placeholder="write the description"
         onChange={(e) => setCreate({ ...create, description: e.target.value })}
       />
 
@@ -70,3 +71,14 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
 }
 
 export default CreateTeam;
+
+
+/*
+<label>Description</label>
+      <MyInput
+        value={create.description}
+        placeholder="description"
+        onChange={(e) => setCreate({ ...create, description: e.target.value })}
+      />
+
+*/

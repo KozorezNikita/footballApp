@@ -41,9 +41,9 @@ function TeamStatHub({ players, team }) {
             <div key={player.name}>
               {" "}
               {index === 0 ? (
-                <div className="player-card" >
+                <div>
                   <img src={player.image} alt={player.surname} />{" "}
-                  <div className="info">
+                  <div className="overall">
                     <p>{index + 1} .</p>
                     <p>
                       {" "}

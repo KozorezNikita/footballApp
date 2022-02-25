@@ -191,6 +191,13 @@
   cursor: pointer;
 }
 
+.modal-player textarea {
+  height: 3rem;
+  font-size: 0.8rem;
+  border: 0.2rem solid black;
+  padding: 0.4rem;
+}
+
 .modal-player button:disabled {
   background-color: gray;
   cursor: not-allowed;
@@ -291,12 +298,6 @@ button {
   justify-content: center;
 }
 
-.player-card img {
-  width: 100%;
-  height: 350px;
-  margin-bottom: 1rem;
-  cursor: pointer;
-}
 
 
 
@@ -315,7 +316,65 @@ button {
   background-color: #091c3e;
   color: #cdfb0a;
   position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
 }
+
+
+.player-card img {
+  width: 100%;
+  height: 350px;
+  margin-bottom: 1rem;
+  cursor: pointer;  
+}
+
+.player-card .surname {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+
+.player-card:hover  {
+  transform: rotateY(180deg);
+  transition-delay: 500ms;
+}
+
+.player-card:hover .surname, .player-card:hover .name {
+  transform: rotateY(180deg); 
+  transition-delay: 500ms;
+}
+
+.player-card img,p  {
+  backface-visibility: hidden;
+}
+
+.back {
+    position: absolute;
+    padding: 1rem; 
+    font-size: 1.5rem;
+    transform: rotateY(180deg); 
+    background: #091c3e;
+    color: #cdfb0a;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/*
+
+.player-card:hover .card-info {
+  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .player-card .card-info {
   display: none;
@@ -327,11 +386,7 @@ button {
   
 }
 
-.player-card:hover .card-info {
-  animation: fadeIn 1s ease-in-out;
-  display: flex;
-  flex-direction: column;
-}
+
 
 .card-info div {
   display: flex;
@@ -362,11 +417,8 @@ button {
 .card-id .player-card:hover .card-info{
   display: none;
 }
+*/
 
-.player-card .surname {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
 
 
 @media screen and (max-width: 1861px) {
@@ -449,6 +501,7 @@ button {
   width: 332px;
   height: 350px;
   cursor: unset;
+  transform: unset;
 }
 
 .team-stat .player-card {
@@ -456,15 +509,14 @@ button {
   animation: unset;
 }
 
-.player-card .info {
-  margin-top: 0;
+ .overall {
+  margin: 0 1rem ;
   font-size: 1.5rem;
   display: flex;
-}
-.player-card .info p {
-  margin: 0 1rem 1rem 0;
   justify-content: space-between;
+  
 }
+
 
 .team-stat .others {
   margin-top: 0;
@@ -550,12 +602,24 @@ button {
   animation: fadeIn 1s ease-in-out;
 }
 
-.card-id img {
+
+
+.card-id .info img {
   width: 350px;
   height: 350px;
   border-radius: 50%;
   padding: 1rem;
 }
+
+.card-id .info p {
+  text-align: center;
+}
+
+.card-id .info p:last-child {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 
 .card-id div {
   margin: 2rem 0;
@@ -603,20 +667,30 @@ button {
   color: black;
 }
 
-@media screen and (max-width: 735px) {
-  .card-id img {
+@media screen and (max-width: 550px) {
+  .card-id .info img {
     width: 300px;
     height: 300px;
   }
 }
 
-@media screen and (max-width: 650px) {
-  .card-id img {
+@media screen and (max-width: 490px) {
+  .card-id .info img {
     width: 250px;
     height: 250px;
   }
-}
+  .card-id .stats {
+    padding-left: 0;
+  }
+  .stats p {
+    font-size: 1rem;
+  }
 
+  .stats p:nth-child(2) {
+    font-size: 1.3rem;
+  }
+}
+/*
 @media screen and (max-width: 480px) {
   .card-id img {
     width: 250px;
@@ -641,7 +715,7 @@ button {
     min-width: 250px;
   }
 }
-
+*/
 .stat-hub {
   display: flex;
   justify-content: center;
@@ -720,9 +794,9 @@ td {
 .login-form {
   display: flex;
   flex-direction: column;
-  max-width: 330px;
+  min-width: 350px;
+  max-width: 420px;
   margin: 3rem auto;
-  font-size: 1.5rem;
   border-radius: 1rem;
   padding: 1rem;
   background-color: #091c3e;
@@ -733,10 +807,47 @@ td {
   padding: 1rem 0;
 }
 
+.login-form h1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
 .login-form button {
   font-size: 1.5rem;
   padding: 0.5rem;
   width: 100%;
   border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.login-form button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  border: unset;
+}
+
+.login-form p {
+  color: gray;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.2rem;
+}
+
+.login-form .error {
+  border: 0.3rem solid #de7575;
+  color: #c20707;
+  background: #fdf6f6;
+  text-decoration: none;
+  padding: 0.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+  margin: 0 2rem;
+}
+
+.login-form .success {
+  border: 0.3rem solid green;
+  color: green;
+  background: #fdf6f6;
+  text-decoration: none;
+  padding: 0.5rem;
+  margin: 0 2rem;
 }

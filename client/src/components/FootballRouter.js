@@ -1,13 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { FootballContext } from "../context/FootballContext";
 import { footballRoutes } from "../router/router";
 import { loginRoutes } from "../router/router";
 
 function FootballRouter() {
-  const { auth } = useContext(FootballContext);
+  const { token, setToken } = useContext(FootballContext);
 
-  return auth ? (
+
+  
+
+
+  return token ? (
     <Switch>
       {footballRoutes.map((route) => (
         <Route
@@ -17,7 +21,6 @@ function FootballRouter() {
           key={route.path}
         />
       ))}
-      <Redirect to="FootballApp" />
     </Switch>
   ) : (
     <Switch>
@@ -29,7 +32,6 @@ function FootballRouter() {
           key={route.path}
         />
       ))}
-      <Redirect to="Login" />
     </Switch>
   );
 }

@@ -5,7 +5,7 @@ import MyLoader from "../components/UI/MyLoader/MyLoader";
 import MySelect from "../components/UI/select/MySelect";
 import MyInput from "../components/UI/input/MyInput";
 
-function StatisticHub() {
+function TableHub() {
   const [players, setPlayers] = useState([]);
   const [fetchPlayers, isPlayersLoading, playerError] = useFetching(
     async () => {
@@ -99,4 +99,4 @@ function StatisticHub() {
   );
 }
 
-export default StatisticHub;
+export default TableHub;

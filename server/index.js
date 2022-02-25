@@ -7,6 +7,7 @@ const cors = require("cors");
 const playersRouter = require("./routes/players.routes");
 const statisticRouter = require("./routes/statistic.routes");
 const teamsRouter = require("./routes/teams.routes");
+const authRouter = require("./routes/auth.routes");
 
 const PORT = process.env.PORT || 7000;
 
@@ -27,5 +28,10 @@ app.use(function (req, res, next) {
 app.use("/api", playersRouter);
 app.use("/api", statisticRouter);
 app.use("/api", teamsRouter);
+app.use("/auth", authRouter)
+
+app.get("/", (req, res) => {
+  res.status(200).json({message: "Hi, Nikita!"})
+})
 
 app.listen(PORT, () => console.log(`server on ${PORT} `));
