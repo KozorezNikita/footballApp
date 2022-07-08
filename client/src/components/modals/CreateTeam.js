@@ -57,7 +57,6 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
       />
       <label>Description</label>
       <textarea
-      
         value={create.description}
         placeholder="write the description"
         onChange={(e) => setCreate({ ...create, description: e.target.value })}
@@ -71,7 +70,6 @@ function CreateTeam({ players, setPlayers, modal, setModal }) {
 }
 
 export default CreateTeam;
-
 
 /*
 <label>Description</label>

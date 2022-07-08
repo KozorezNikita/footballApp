@@ -18,9 +18,6 @@ function App() {
 
 export default App;
 
-
-
-
 /*
 <HashRouter basename="/">
 </HashRouter>

@@ -28,10 +28,10 @@ app.use(function (req, res, next) {
 app.use("/api", playersRouter);
 app.use("/api", statisticRouter);
 app.use("/api", teamsRouter);
-app.use("/auth", authRouter)
+app.use("/auth", authRouter);
 
 app.get("/", (req, res) => {
-  res.status(200).json({message: "Hi, Nikita!"})
-})
+  res.status(200).json({ message: "Hi, Nikita!" });
+});
 
 app.listen(PORT, () => console.log(`server on ${PORT} `));

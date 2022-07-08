@@ -59,11 +59,10 @@
 */
 .loader {
   display: flex;
-  
+
   justify-content: center;
   align-items: center;
   height: 500px;
-  
 }
 
 .myLoader {
@@ -71,11 +70,7 @@
   font-size: 4rem;
   padding: 0.5rem;
   animation: spin 1.5s linear infinite;
-  
 }
-
-
-
 
 @keyframes spin {
   0% {

@@ -4,6 +4,7 @@ import { useFetching } from "../hooks/useFetching";
 import MyLoader from "../components/UI/MyLoader/MyLoader";
 import MySelect from "../components/UI/select/MySelect";
 import MyInput from "../components/UI/input/MyInput";
+import { usePlayers } from "../hooks/usePlayers";
 
 function TableHub() {
   const [players, setPlayers] = useState([]);
@@ -31,6 +32,12 @@ function TableHub() {
         .toLowerCase()
         .indexOf(search.text.toLowerCase().toString()) !== -1
   );
+
+  /*
+
+  const filteredByTextPlayers = usePlayers(players, filter, search.text, search.amount)
+
+*/
 
   return (
     <div className="stat-hub">

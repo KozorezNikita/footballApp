@@ -7,10 +7,6 @@ import { loginRoutes } from "../router/router";
 function FootballRouter() {
   const { token, setToken } = useContext(FootballContext);
 
-
-  
-
-
   return token ? (
     <Switch>
       {footballRoutes.map((route) => (

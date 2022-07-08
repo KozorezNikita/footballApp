@@ -9,13 +9,22 @@ const FootballProvider = (props) => {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    const tk = localStorage.getItem("token")
-    setToken(tk)
+    const tk = localStorage.getItem("token");
+    setToken(tk);
   }, []);
 
   return (
     <FootballContext.Provider
-      value={{ auth, setAuth, toggle, setToggle, teamId, setTeamId, token, setToken }}
+      value={{
+        auth,
+        setAuth,
+        toggle,
+        setToggle,
+        teamId,
+        setTeamId,
+        token,
+        setToken,
+      }}
     >
       {props.children}
     </FootballContext.Provider>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useFetching } from "../hooks/useFetching";
-import { usePlayers } from "../hooks/usePlayers";
+
 import PlayersService from "../API/PlayersService";
 import TeamsService from "../API/TeamsService";
 import PlayersList from "../components/PlayersList";
@@ -12,17 +12,18 @@ import CreatePlayer from "../components/modals/CreatePlayer";
 import { FootballContext } from "../context/FootballContext";
 import CreateTeam from "../components/modals/CreateTeam";
 import Footer from "../components/UI/Footer/Footer";
+import { Switch, Route } from "react-router-dom";
+
+import Field from "./Field";
+import FootballCardById from "./FootballCardById";
+import Squad from "./Squad";
 
 function FootballApp() {
   const [players, setPlayers] = useState([]);
-  const [team, setTeam] = useState([]);
+  const [copyPlayers, setCopyPlayers] = useState([]);
+  const [team, setTeam] = useState({});
   const [allTeams, setAllTeams] = useState([]);
-  const { toggle, setToggle } = useContext(FootballContext);
   const { teamId, setTeamId } = useContext(FootballContext);
-  const [modal, setModal] = useState(false);
-  const [selected, setSelected] = useState({ text: "" });
-  const [toggleModal, setToggleModal] = useState(false);
-  
 
   const [fetchPlayers, isPlayersLoading, playerError] = useFetching(
     async () => {
@@ -38,80 +39,46 @@ function FootballApp() {
     setAllTeams(allTeams.data);
   });
 
-  const sortedAndSearchedPlayers = usePlayers(players, teamId, selected.text);
-
   useEffect(() => {
     fetchPlayers(teamId);
     fetchTeams(teamId);
   }, [teamId]);
 
   return (
-    <div className="footballApp">
-      <MyModal visible={modal} setVisible={setModal}>
-        <div className="modal-toggle">
-          <p
-            className={toggleModal ? "active" : null}
-            onClick={() => setToggleModal(true)}
-          >
-            Team
-          </p>
-          <hr />
-          <p
-            className={toggleModal ? null : "active"}
-            onClick={() => setToggleModal(false)}
-          >
-            Player
-          </p>
-        </div>
-        {toggleModal ? (
-          <CreateTeam
-            players={players}
-            setPlayers={setPlayers}
-            modal={modal}
-            setModal={setModal}
-          />
-        ) : (
-          <CreatePlayer
-            players={players}
-            setPlayers={setPlayers}
-            modal={modal}
-            setModal={setModal}
-            allTeams={allTeams}
-            setAllTeams={setAllTeams}
-          />
-        )}
-      </MyModal>
-
+    <>
       <SearchBar
+        team={team}
         players={players}
-        selected={selected}
-        setSelected={setSelected}
         teamId={teamId}
         setTeamId={setTeamId}
-        toggle={toggle}
-        setToggle={setToggle}
         allTeams={allTeams}
         setAllTeams={setAllTeams}
       />
-      {toggle ? (
-        <button className="btn-add" onClick={() => setModal(true)}>
-          Add player to database
-        </button>
-      ) : null}
-      {isPlayersLoading ? (
-        <MyLoader />
-      ) : toggle ? (
-        <>
-          <div className="empty">
-            {playerError && <h1>Error happened ${playerError}</h1>}
-          </div>
-          <PlayersList players={sortedAndSearchedPlayers} />{" "}
-          <Footer />
-        </>
-      ) : (
-        <TeamStatHub players={sortedAndSearchedPlayers} team={team} />
-      )}
-    </div>
+
+      <Switch>
+        <Route exact path="/footballApp/squad">
+          <Squad
+            players={players}
+            setPlayers={setPlayers}
+            allTeams={allTeams}
+            setAllTeams={setAllTeams}
+          />
+        </Route>
+        <Route exact path="/footballApp/teamStatHub">
+          <TeamStatHub
+            players={players}
+            team={team}
+            isPlayersLoading={isPlayersLoading}
+          />
+        </Route>
+        <Route exact path="/footballApp/field">
+          <Field teamId={teamId} />
+        </Route>
+        <Route exact path="/footballApp/:id">
+          <FootballCardById />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
