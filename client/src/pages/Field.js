@@ -193,6 +193,7 @@ function Field({ teamId }) {
               {copyPlayers.map((player, index) =>
                 index < 11 ? (
                   <div
+                    key={player.id}
                     className={formations[activeFormation].style + index}
                     draggable={true}
                     onDragStart={(e) => dragStartHandler(e, player)}
@@ -254,6 +255,7 @@ function Field({ teamId }) {
                 {position === null
                   ? sortedPlayers.map((player) => (
                       <BenchCard
+                        key={player.id}
                         player={player}
                         dragStartHandler={dragStartHandler}
                         dragLeaveHandler={dragLeaveHandler}
@@ -264,6 +266,7 @@ function Field({ teamId }) {
                     ))
                   : filteredByPositionPlayers.map((player) => (
                       <BenchCard
+                        key={player.id}
                         player={player}
                         dragStartHandler={dragStartHandler}
                         dragLeaveHandler={dragLeaveHandler}
